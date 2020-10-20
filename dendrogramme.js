@@ -2,12 +2,12 @@ var colorin = "#00f", colorout = "#f00", colornone = "#ccc";
 var width = 954, radius = width / 2;
 
 // Fonctions
-line = d3.lineRadial()
+const line = d3.lineRadial()
     .curve(d3.curveBundle.beta(0.85))
     .radius(d => d.y)
     .angle(d => d.x)
 
-tree = d3.cluster()
+const tree = d3.cluster()
     .size([2 * Math.PI, radius - 100])
 
 // Main
@@ -19,34 +19,33 @@ function main () {
   .attr("viewBox", [-width / 2, -width / 2, width, width]);
 
   const node = svg.append("g")
-  .attr("font-family", "sans-serif")
-  .attr("font-size", 10)
-  .selectAll("g")
-  .data(root.leaves())
-  .join("g")
-  .attr("transform", d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`)
-  .append("text")
-  .attr("dy", "0.31em")
-  .attr("x", d => d.x < Math.PI ? 6 : -6)
-  .attr("text-anchor", d => d.x < Math.PI ? "start" : "end")
-  .attr("transform", d => d.x >= Math.PI ? "rotate(180)" : null)
-  .text(d => d.data.name)
-  .each(function(d) { d.text = this;  })
-  .on("mouseover", overed)
-  .on("mouseout", outed)
-  .call(text => text.append("title").text(d => `${id(d)}
-        ${d.outgoing.length} outgoing
-        ${d.incoming.length} incoming`));
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+      .selectAll("g")
+      .data(root.leaves())
+      .join("g")
+        .attr("transform", d => `rotate(${d.x * 180 / Math.PI - 97}) translate(${d.y},0)`) // MAGIG NUMBER 97. Original : 90. Pour rotation
+      .append("image")
+        .attr("width", "100")
+        .attr("height", "100")
+        .attr("x", 6) // ?
+        .attr("href", d => `images/${d.data.id_image}.png`)
+        .each(function(d) { d.text = this;  })
+        .on("mouseover", overed)
+        .on("mouseout", outed)
+        .call((text) => {text.append("title").text(d => `${id(d)}
+                              ${d.outgoing.length} outgoing
+                              ${d.incoming.length} incoming`)});
 
   const link = svg.append("g")
-  .attr("stroke", colornone)
-  .attr("fill", "none")
-  .selectAll("path")
-  .data(root.leaves().flatMap(leaf => leaf.outgoing))
-  .join("path")
-  .style("mix-blend-mode", "multiply")
-  .attr("d", ([i, o]) => line(i.path(o)))
-  .each(function(d) { d.path = this;  });
+    .attr("stroke", colornone)
+    .attr("fill", "none")
+    .selectAll("path")
+    .data(root.leaves().flatMap(leaf => leaf.outgoing))
+    .join("path")
+    .style("mix-blend-mode", "multiply")
+    .attr("d", ([i, o]) => line(i.path(o)))
+    .each(function(d) { d.path = this;  });
 
   function overed(event, d) {
     link.style("mix-blend-mode", null);
@@ -105,8 +104,8 @@ function id(node) {
   return `${node.parent ? id(node.parent) + "." : ""}${node.data.name}`;
 }
 
-data = hierarchy(flare)
 
 window.onload = function () {
+  data = hierarchy(donnees)
   document.body.appendChild(main());
 }
