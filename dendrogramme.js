@@ -16,7 +16,7 @@ function main () {
     .sort((a, b) => d3.ascending(a.height, b.height) || d3.ascending(a.data.name, b.data.name))));
 
   const svg = d3.create("svg")
-  .attr("viewBox", [-width / 2, -width / 2, width, width]);
+  .attr("viewBox", [-width, -width, width * 2, width * 2]);
 
   const node = svg.append("g")
         .attr("font-family", "sans-serif")
@@ -107,5 +107,5 @@ function id(node) {
 
 window.onload = function () {
   data = hierarchy(donnees)
-  document.body.appendChild(main());
+  document.getElementById("main").appendChild(main());
 }

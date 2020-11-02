@@ -1,8 +1,26 @@
 body {
+
+}
+
+header {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+#oeuvre {
   display: flex;
-  justify-content: center;
+}
+
+#info {
+  width: 20%;
+  border-right: 1px solid black;
+}
+
+main {
+  width: 80%;
 }
 
 svg {
-  height: 100vh;
+  width: 100%;
+  height: 75%;
 }
