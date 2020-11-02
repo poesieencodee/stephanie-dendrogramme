@@ -8,7 +8,7 @@ const line = d3.lineRadial()
     .angle(d => d.x)
 
 const tree = d3.cluster()
-    .size([2 * Math.PI, radius - 100])
+    .size([2 * Math.PI, radius - 120])
 
 // Main
 function main () {
@@ -26,8 +26,8 @@ function main () {
       .join("g")
         .attr("transform", d => `rotate(${d.x * 180 / Math.PI - 97}) translate(${d.y},0)`) // MAGIG NUMBER 97. Original : 90. Pour rotation
       .append("image")
-        .attr("width", "100")
-        .attr("height", "100")
+        .attr("width", "90")
+        .attr("height", "90")
         .attr("x", 6) // ?
         .attr("href", d => `images/${d.data.id_image}.png`)
         .each(function(d) { d.text = this;  })
