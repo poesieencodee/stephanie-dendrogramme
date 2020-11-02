@@ -39,7 +39,7 @@ function main () {
 
   const link = svg.append("g")
     .attr("stroke", colornone)
-    .attr("stroke-width", 15)
+    .attr("stroke-width", 25)
     .attr("fill", "none")
     .selectAll("path")
     .data(root.leaves().flatMap(leaf => leaf.outgoing))
