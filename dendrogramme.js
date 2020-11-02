@@ -1,5 +1,5 @@
 var colorin = "#00f", colorout = "#f00", colornone = "#ccc";
-var width = 954, radius = width / 2;
+var width = 954, radius = width / 1.2;
 
 // Fonctions
 const line = d3.lineRadial()
@@ -39,6 +39,7 @@ function main () {
 
   const link = svg.append("g")
     .attr("stroke", colornone)
+    .attr("stroke-width", 4)
     .attr("fill", "none")
     .selectAll("path")
     .data(root.leaves().flatMap(leaf => leaf.outgoing))
