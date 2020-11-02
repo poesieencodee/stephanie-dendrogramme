@@ -1,4 +1,4 @@
-var colorin = "#00f", colorout = "#f00", colornone = "#ccc";
+var colorin = colorout = "#f00", colornone = "#ccc";
 var width = 954, radius = width / 1.2;
 
 // Fonctions
@@ -8,7 +8,7 @@ const line = d3.lineRadial()
     .angle(d => d.x)
 
 const tree = d3.cluster()
-    .size([2 * Math.PI, radius - 120])
+    .size([2 * Math.PI, radius])
 
 // Main
 function main () {

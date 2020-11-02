@@ -4,6 +4,7 @@ body {
 
 header {
   width: 100%;
+  height: 10vh;
   border-bottom: 1px solid black;
 }
 
@@ -12,15 +13,20 @@ header {
 }
 
 #info {
-  width: 20%;
+  width: 20vw;
+  height: 90vh;
   border-right: 1px solid black;
 }
 
 main {
-  width: 80%;
+  width: 80vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 svg {
   width: 100%;
-  height: 75%;
+  height: 95%;
 }
