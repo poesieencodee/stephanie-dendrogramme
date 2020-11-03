@@ -1,5 +1,6 @@
 var colorin = colorout = "#f00", colornone = "#ccc";
 var width = 954, radius = width / 1.2;
+var data = hierarchy(donnees);
 
 // Fonctions
 const line = d3.lineRadial()
@@ -105,8 +106,22 @@ function id(node) {
   return `${node.parent ? id(node.parent) + "." : ""}${node.data.name}`;
 }
 
+function creer_images_rondes (donnees) {
+
+  console.log(donnees);
+  let container = document.createElement("div");
+  container.id = "container-images-rondes";
+
+  donnees.forEach((image, index) => {
+    let img = document.createElement("img");
+    img.src = "images/" + (index + 1) + ".png";
+    img.className = "grande-ronde";
+    container.appendChild(img);
+  });
+  return container;
+}
 
 window.onload = function () {
-  data = hierarchy(donnees)
   document.getElementById("main").appendChild(main());
+  document.getElementById("main").appendChild(creer_images_rondes(donnees));
 }
