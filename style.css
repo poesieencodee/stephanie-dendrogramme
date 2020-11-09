@@ -1,11 +1,15 @@
 body {
-
+  font-family: 'Oswald', sans-serif;
 }
 
 header {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 10vh;
   border-bottom: 1px solid black;
+  padding-left: 10px;
 }
 
 #oeuvre {
@@ -13,12 +17,14 @@ header {
 }
 
 #info {
+  position: fixed;
+  top: 10vh;
+  left: 0;
   width: 20vw;
   height: 90vh;
   border-right: 1px solid black;
-  padding: 5px;
+  padding: 10px;
   text-align: justify;
-  padding-bottom: 20px;
 }
 
 #info h2, #info h3 {
@@ -26,12 +32,15 @@ header {
 }
 
 #container-info {
-  margin: 5px;
-  height: 100%;
+  margin: 0 5px;
+  height: calc(100% - 20px);
   overflow: auto;
 }
 
 main {
+  position: fixed;
+  top: 10vh;
+  left: 20vw;
   width: 80vw;
   height: 90vh;
   display: flex;
