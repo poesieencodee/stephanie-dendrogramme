@@ -56,7 +56,7 @@ function main () {
     d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", colorin).attr("font-weight", "bold");
     d3.selectAll(d.outgoing.map(d => d.path)).attr("stroke", colorout).raise();
     d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", colorout).attr("font-weight", "bold");
-
+    afficher_grande(d);
   }
 
   function outed(event, d) {
@@ -66,7 +66,7 @@ function main () {
     d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", null).attr("font-weight", null);
     d3.selectAll(d.outgoing.map(d => d.path)).attr("stroke", null);
     d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", null).attr("font-weight", null);
-
+    cacher_grande(d);
   }
   return svg.node();
 }
@@ -108,21 +108,39 @@ function id(node) {
 
 function creer_images_rondes (donnees) {
 
-  console.log(donnees);
-  let container = document.createElement("div");
-  container.id = "container-images-rondes";
-
+  let container = document.getElementById("grandes-images");
   donnees.forEach((image, index) => {
     let img = document.createElement("img");
-    img.src = "images/" + (index + 1) + ".png";
-    img.className = "grande-ronde";
+    img.id = "image_" + image.id_image;
+    img.src = "images/" + image.id_image + ".png";
+    img.className = "grande";
     container.appendChild(img);
   });
-  return container;
+}
+
+function afficher_grande (image) {
+  let el = document.getElementById("image_" + image.data.id_image);
+
+  window.setTimeout(() => {
+    el.style.display = "initial";
+    window.setTimeout(() => {
+      el.style.opacity = 1;
+    }, 0);
+  }, 250);
+}
+
+function cacher_grande (image) {
+  let el = document.getElementById("image_" + image.data.id_image);
+
+  el.style.opacity = 0;
+  window.setTimeout(() => {
+    el.style.display = "none";
+  }, 250);
 }
 
 window.onload = function () {
   document.getElementById("main").appendChild(main());
-  document.getElementById("main").appendChild(creer_images_rondes(donnees));
+  creer_images_rondes(donnees);
   document.getElementById("container-info").innerHTML = textes.fr;
 }
+
