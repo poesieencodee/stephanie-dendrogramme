@@ -124,4 +124,5 @@ function creer_images_rondes (donnees) {
 window.onload = function () {
   document.getElementById("main").appendChild(main());
   document.getElementById("main").appendChild(creer_images_rondes(donnees));
+  document.getElementById("container-info").innerHTML = textes.fr;
 }

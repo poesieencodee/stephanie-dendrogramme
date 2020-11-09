@@ -16,6 +16,19 @@ header {
   width: 20vw;
   height: 90vh;
   border-right: 1px solid black;
+  padding: 5px;
+  text-align: justify;
+  padding-bottom: 20px;
+}
+
+#info h2, #info h3 {
+  text-align: center;
+}
+
+#container-info {
+  margin: 5px;
+  height: 100%;
+  overflow: auto;
 }
 
 main {
@@ -53,3 +66,4 @@ svg {
 .grande-ronde.actif {
 
 }
+
