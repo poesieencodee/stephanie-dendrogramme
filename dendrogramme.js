@@ -112,7 +112,7 @@ function creer_images_rondes (donnees) {
   donnees.forEach((image, index) => {
     let img = document.createElement("img");
     img.id = "image_" + image.id_image;
-    img.src = "images/" + image.id_image + "-large.png";
+    img.src = "images/" + image.id_image + "-400x400.png";
     img.className = "grande";
     container.appendChild(img);
   });
@@ -143,4 +143,3 @@ window.onload = function () {
   creer_images_rondes(donnees);
   document.getElementById("container-info").innerHTML = textes.fr;
 }
-
