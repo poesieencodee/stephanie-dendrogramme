@@ -1,3 +1,3 @@
 # stephanie-dendrogramme
 
-https://poesieencodee/github.com/stephanie-dendrogramme
+https://poesieencodee.github.io/stephanie-dendrogramme
